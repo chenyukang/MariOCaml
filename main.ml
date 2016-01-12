@@ -9,9 +9,6 @@ let imgsToLoad = 4
 let level_width = 2400.
 let level_height = 256.
 
-let get_width () = level_width
-
-
 (*Canvas is chosen from the index.html file. The context is obtained from
  *the canvas. Listeners are added. A level is generated and the general
  *update_loop method is called to make the level playable.*)
@@ -20,7 +17,7 @@ let load _ =
   let canvas_id = "canvas" in
   let canvas =
     Js.Opt.get
-      (Js.Opt.bind ( Html.document##getElementById(Js.string canvas_id))
+      (Js.Opt.bind (Html.document##getElementById(Js.string canvas_id))
         Html.CoerceTo.canvas)
       (fun () ->
         Printf.printf "cant find canvas %s \n" canvas_id;
@@ -30,7 +27,10 @@ let load _ =
   let _ = Html.addEventListener Html.document Html.Event.keydown (Html.handler Director.keydown) Js._true in
   let _ = Html.addEventListener Html.document Html.Event.keyup (Html.handler Director.keyup) Js._true in
   let () = Pg.init () in
-  let _ = Director.update_loop canvas (Pg.generate level_width level_height context) (level_width, level_height) in
+  let _ = Director.update_loop
+      canvas
+      (Pg.generate level_width level_height context)
+      (level_width, level_height) in
   print_endline "asd";
   ()
 
@@ -41,7 +41,7 @@ let inc_counter _ =
 (*Used for concurrency issues.*)
 let preload _ =
   let root_dir = "sprites/" in
-  let imgs = [ "blocks.png";"items.png";"enemies.png";"mario-small.png" ] in
+  let imgs = [ "blocks.png";"items.png";"enemies.png";"mario-small.png"] in
   List.map (fun img_src ->
     let img_src = root_dir ^ img_src in
     let img = (Html.createImg Html.document) in

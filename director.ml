@@ -361,7 +361,7 @@ let run_update_particle state part =
 
 (*update_loop is constantly being called to check for collisions and to
  *update each of the objects in the game.*)
-let update_loop canvas (player,objs) map_dim =
+let update_loop canvas (player, objs) map_dim =
   let scale = 1. in
   let ctx = canvas##getContext (Dom_html._2d_) in
   let cwidth = (float_of_int canvas##width) /. scale in

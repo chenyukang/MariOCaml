@@ -49,8 +49,9 @@ let make_type typ ctx =
   
 let make ?vel:(vel=(0.,0.)) ?acc:(acc=(0.,0.)) part_type pos ctx =
   let params = make_type part_type ctx in
-  let pos = pair_to_xy pos and vel = pair_to_xy vel 
-                           and acc = pair_to_xy acc in
+  let pos = pair_to_xy pos
+  and vel = pair_to_xy vel
+  and acc = pair_to_xy acc in
   {
     params;
     part_type;

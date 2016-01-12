@@ -1,4 +1,5 @@
-type dir_1d = | Left | Right 
+type dir_1d = | Left | Right
+                
 type dir_2d = | North | South | East | West
 
 (* Generic xy record for easy position access *)
